@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Stoixima.Data
 {
-    interface ITimeFlowRepo
+    public interface ITimeFlowRepo
     {
-        MatchState TimeState(MatchModel match, MatchState state);
+
     }
 }

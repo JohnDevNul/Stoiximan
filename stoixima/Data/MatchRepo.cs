@@ -1,4 +1,5 @@
-﻿using Stoixima.Enums;
+﻿using Stoixima.Dtos;
+using Stoixima.Enums;
 using Stoixima.Models;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,17 @@ namespace Stoixima.Data
         }
         public MatchModel CreateMatch(MatchModel match)
         {
-            var maxId = _matches.Select(c => c.Id).Max();
+            if (_matches != null && _matches.Count > 0)
+            {
+                var maxId = _matches.Select(c => c.Id).Max();
 
-            match.Id = match.Id + 1;
+                match.Id = maxId + 1;
+
+                _matches.Add(match);
+
+                return match;
+            }
+            match.Id = 1;
 
             _matches.Add(match);
 
@@ -48,13 +57,6 @@ namespace Stoixima.Data
             return _matches.FirstOrDefault(c => c.Id == id);
         }
 
-        public MatchState StartMatch(MatchModel match, MatchState state)
-        {
-            var time = match.StartTime;
-
-            return state;
-        }
-
         public bool UpdateMatch(int id, MatchModel match)
         {
             var item = _matches.FirstOrDefault(c => c.Id == id);
@@ -69,6 +71,13 @@ namespace Stoixima.Data
             }
 
             return false;
+        }
+
+        public MatchModel StartMatch(MatchModel match, MatchState state)
+        {
+            match.State = MatchState.FirstHalf;
+
+            return match;
         }
     }
 }

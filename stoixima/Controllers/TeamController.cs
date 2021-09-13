@@ -43,10 +43,10 @@ namespace Stoixima.Controllers
             return Ok(teamItem);
         }
 
-        [HttpPut("{id}")]
-        public ActionResult UpdateTeam(int id, TeamModel team)
+        [HttpPut]
+        public ActionResult UpdateTeam(TeamModel team)
         {
-            _repository.UpdateTeam(id, team);
+            _repository.UpdateTeam(team.Id, team);
 
             return Ok();
         }

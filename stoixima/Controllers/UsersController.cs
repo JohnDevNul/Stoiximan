@@ -38,9 +38,9 @@ namespace Stoixima.Controllers
         }
 
         [HttpPost]
-        public ActionResult <UserModel> AddUser(UserModel user)
+        public ActionResult <UserModel> CreateUser(UserModel user)
         {
-            var userItem = _repository.AddUser(user);
+            var userItem = _repository.CreateUser(user);
 
             return Ok(userItem);
         }

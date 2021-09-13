@@ -13,16 +13,23 @@ namespace Stoixima.Data
         {
             _teams = new List<TeamModel>
             {
-                new TeamModel { Id = 0, Name = "Olimpiakos", Points = 10 },
-                new TeamModel { Id = 1, Name = "Panatha", Points = 7 },
-                new TeamModel { Id = 2, Name = "Aek", Points = 3 }
+
             };
         }
         public TeamModel CreateTeam(TeamModel team)
         {
-            var maxId = _teams.Select(c => c.Id).Max();
+            if (_teams != null && _teams.Count > 0)
+            {
+                var maxId = _teams.Select(c => c.Id).Max();
 
-            team.Id = maxId + 1;
+                team.Id = maxId + 1;
+
+                _teams.Add(team);
+
+                return team;
+            }
+
+            team.Id = 1;
 
             _teams.Add(team);
 

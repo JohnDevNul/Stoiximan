@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stoixima.Data;
+using Stoixima.Data.Db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,16 +20,20 @@ namespace stoixima
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get;}
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            services.AddSingleton<IUserRepo, UserRepo>();
+            services.AddSingleton<IUserRepo, DbUserRepo>();
 
-            services.AddSingleton<TimeFlowRepo>();
+            services.AddSingleton<ITimeFlowRepo, TimeFlowService>();
+
+            services.AddSingleton<ITeamRepo, DbTeamRepo>();
+
+            services.AddSingleton<IMatchRepo, DbMatchRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

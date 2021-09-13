@@ -1,4 +1,5 @@
-﻿using Stoixima.Enums;
+﻿using Stoixima.Dtos;
+using Stoixima.Enums;
 using Stoixima.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,6 @@ namespace Stoixima.Data
         MatchModel CreateMatch(MatchModel match);
         void DeleteMatch(int id);
         bool UpdateMatch(int id, MatchModel match);
-        MatchState StartMatch(MatchModel match, MatchState state);
+        MatchModel StartMatch(MatchModel match, MatchState state);
     };
 }

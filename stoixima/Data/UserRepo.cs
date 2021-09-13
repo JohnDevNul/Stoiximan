@@ -13,8 +13,7 @@ namespace Stoixima.Data
         {
             _users = new List<UserModel>
             {
-                new UserModel {Id=0, FirstName="John", LastName="Zolo", Password="12345", Sex="Male", Date="13/5/97", Address="Ano Kerasovo", Email="yahoo", Phone="6947"},
-                new UserModel {Id=1, FirstName="Thana", LastName="Zolo", Password="123456", Sex="Male", Date="20/7/98", Address="Ano Kerasovo", Email="google", Phone="6947"}
+
             };
         }
 
