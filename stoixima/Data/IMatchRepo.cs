@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Stoixima.Data
 {
-    public interface IMatchRepo
+    public interface IMatchRepo : IEnumerable<Task>
     {
-        IEnumerable<MatchModel> GetAllMatches();
+        Task<IEnumerable<MatchModel>> GetAllMatches();
         MatchModel GetMatchById(int id);
         MatchModel CreateMatch(MatchModel match);
         void DeleteMatch(int id);

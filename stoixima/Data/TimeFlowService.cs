@@ -17,12 +17,12 @@ namespace Stoixima.Data
         public TimeFlowService(IMatchRepo repository)
         {
             _matchRepo = repository;
-            _timer = new Timer(TimerCallback, null, 0, 60000);
+            _timer = new Timer(TimerCallbackAsync, null, 0, 60000);
         }
 
-        private void TimerCallback(Object o)
+        private async  void TimerCallbackAsync(Object o)
         {
-            var matches = _matchRepo.GetAllMatches();
+            var matches = await _matchRepo.GetAllMatches();
 
             foreach (var i in matches)
             {

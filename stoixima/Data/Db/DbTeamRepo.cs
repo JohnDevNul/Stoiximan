@@ -29,7 +29,7 @@ namespace Stoixima.Data.Db
                 connection.Open();
             }
 
-            var result = connection.QuerySingle<int>("INSERT INTO Teams VALUES (@name, @points);SELECT CAST(SCOPE_IDENTITY() as int)", new {Name = item.Name, Points = item.Points});
+            var result = connection.QuerySingle<int>("INSERT INTO Teams (name, points) VALUES (@name, @points);SELECT CAST(SCOPE_IDENTITY() as int)", new {Id = item.Id, Name = item.Name, Points = item.Points});
 
             connection.Close();
 
